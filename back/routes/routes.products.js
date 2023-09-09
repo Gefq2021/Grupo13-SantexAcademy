@@ -2,20 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const controller = require('../controllers/products.controller');
-const multer  = require('multer')
-const upload = multer({
-    limits: {
-      fileSize: 1024 * 1024 * 5, // 5 MB
-    },
-    fileFilter(req, file, cb) {
-      // Solo permite archivos de tipo imagen
-      if (file.mimetype.match(/^image\/*/)) {
-        cb(null, true);
-      } else {
-        cb(new Error('Solo se permiten archivos de tipo imagen'));
-      }
-    },
-  });
+const upload = require('../middleware/multer.middleware');
 
 // Create
 //local.../products/
