@@ -1,6 +1,7 @@
 const productscontroller = {};
 const { Products } = require('../models') //--> nombre con el que se creo el modelo en primer lugar
 
+
 /**
  * @method POST
  * @name create
@@ -9,13 +10,15 @@ const { Products } = require('../models') //--> nombre con el que se creo el mod
  * "description":String
  * "quantity": number
  * "price":number
- * "image":string
+ * "image":file
  * "status":string
  * }
  * @description metodo para crear un producto y almacenarlo en la base de datos
  */
 productscontroller.create =  async (req, res) => {
     try {
+      //guardar la info del archivo en req.body.image para guardar como BLOB
+      req.body.image = req.file.buffer;
       await Products.create(req.body);
       res.status(201).json("Product correctly created");
       } catch (error) {

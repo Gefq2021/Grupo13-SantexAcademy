@@ -12,8 +12,14 @@ import { Product } from 'src/app/core/interfaces/product';
   styleUrls: ['./form-update.component.css'],
 })
 export class FormUpdateComponent implements OnInit {
-  constructor(private backService: BackServiceService) {}
 
+  constructor(
+    private backService: BackServiceService,
+    private router: Router,
+    private activateRoute: ActivatedRoute,
+    //private dataRouter: DataRouter,
+  ) {
+  }
   // Creamos una lista de productos como ejemplo
 
   searchForm = new FormGroup({
@@ -40,15 +46,7 @@ export class FormUpdateComponent implements OnInit {
   selectedProduct: Product | undefined;
   
 
-  constructor(
-    private backService: BackServiceService,
-    private router: Router,
-    private activateRoute: ActivatedRoute,
-    //private dataRouter: DataRouter,
-  ) {
-       
 
-  }
 
   ngOnInit() {
      
