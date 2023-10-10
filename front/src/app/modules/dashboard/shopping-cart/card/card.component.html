@@ -3,7 +3,10 @@
   <div class="card_img">
     <img src="{{product?.image}}" alt="">
   </div>
-  <span class="card_title">{{product?.name}}</span>
-  <span class="card-stock">{{ product?.quantity }} u.</span>
-  <span class="card-price">$ {{ product?.price }}</span>
+  <div id="info">
+    <span class="card_title">{{product?.name}}</span>
+    <span class="card-stock">{{ product?.quantity }} u.</span>
+    <span class="card-price">$ {{ product?.price }}</span>
+  </div>
+  
 </div>

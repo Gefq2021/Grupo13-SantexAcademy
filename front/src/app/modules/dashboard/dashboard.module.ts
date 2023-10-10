@@ -28,6 +28,8 @@ import { LoginComponent } from './login/login.component';
 import { VistaUsuarioPerfilComponent } from './vista-usuario-perfil/vista-usuario-perfil.component';
 import { RegisterUsersComponent } from './register-users/register-users.component';
 import { VistaHomeVendedorComponent } from './vista-home-vendedor/vista-home-vendedor.component';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 
@@ -52,7 +54,9 @@ import { VistaHomeVendedorComponent } from './vista-home-vendedor/vista-home-ven
     FormsModule,
     MatDialogModule,
     MatSelectModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [DashboardPageComponent],
   providers: [],

@@ -10,22 +10,41 @@
     <button type="submit" class="button empty-cart" (click)="emptyCart()">Vaciar Carrito</button>
     
     <section class="summary">
-      <h2 class="h2">Resumen de Compras</h2>
-      <div class="price-shopping">
-        <div class="summary-item">
-          <span class="product-cost">Productos ({{productList.length}})</span>
-          <span class="product-cost">$ {{ totalPrice }}</span>
-        </div>
-        <div class="summary-item">
-          <span class="shipping-cost">Costo de Envio</span>
-          <span class="shipping-cost">$ {{"envio"}}</span>
-        </div>
-        <div class="summary-item total">
-          <span class="total-price">Total</span>
-          <span class="total-price">$ {{ totalPrice }}</span>
-        </div>
-        <button type="submit" class="button button-buy">Comprar</button>
+      <div class="my-2">
+        <h4 class="h2">Eleccion de fechas</h4>
+        <div class="price-shopping ">
+          <mat-form-field>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Start date">
+              <input matEndDate placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
       </div>
+
+      </div>
+      <div class="my-2">
+        <h4 class="h2">Resumen de Compras</h4>
+        <div class="price-shopping">
+          <div class="summary-item">
+            <span class="product-cost">Productos ({{productList.length}})</span>
+            <span class="product-cost">$ {{ totalPrice }}</span>
+          </div>
+          <div class="summary-item">
+            <span class="shipping-cost">Costo de Envio</span>
+            <span class="shipping-cost">$ {{"envio"}}</span>
+          </div>
+          <div class="summary-item total">
+            <span class="total-price">Total</span>
+            <span class="total-price">$ {{ totalPrice }}</span>
+          </div>
+          <button type="submit" class="button button-buy">Comprar</button>
+        </div>
+      </div>
+     
     </section>
   </main>
   
