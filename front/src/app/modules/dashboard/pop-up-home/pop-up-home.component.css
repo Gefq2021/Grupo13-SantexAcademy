@@ -5,12 +5,35 @@ mat-dialog-content {
 mat-dialog-content img {
     display: block; /* Asegura que la imagen se comporte como un bloque */
     margin: 0 auto; /* Centra la imagen horizontalmente */
+    max-width: 100%;
 }
-  
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+}
+.close{
+    align-self: flex-end;
+    background-color: #a01414;
+    color: white;
+}
+.top{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+.info p{
+    font-size: medium;
+}
 /* Clase de estilo para el botón "Agregar al Carrito" */
 .agregar-al-carrito-button {
     background-color: blue; /* Cambia el color a azul */
     color: white;
+    transition: all .4s;
+}
+.agregar-al-carrito-button:hover {
+    background-color: #3399ff;
 }
 
 /* Clase de estilo para el botón "Editar" */
@@ -19,11 +42,28 @@ mat-dialog-content img {
     color: white;
 }
 .button-container {
+    align-self: center;
     margin-top: 10px; 
  }
   
 .button-container button {
     margin: 3px; 
+}
+.popUp{
+    display: flex;
+    flex-direction: column;
+}
+
+.popUp div{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.title{
+    color: #1429a0;
+    font-size: large;
+}
+img{
+    border-radius: 9%;
 }
 
 
