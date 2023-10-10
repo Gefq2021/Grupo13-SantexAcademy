@@ -244,6 +244,14 @@ card-client {
   background: #db2626; 
   color: white; 
 }
+.rev {
+  background: #2638db; 
+  color: white; 
+}
+.h1{
+  font-size: x-large;
+  font-weight: 700;
+}
 
 @media (min-width: 768px) {
     .container {
