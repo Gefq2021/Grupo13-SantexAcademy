@@ -13,6 +13,9 @@
   box-shadow: 0px 0px 42px rgba(0, 0, 0, 0.01), 0px 0px 26px rgba(0, 0, 0, 0.05),
     0px 0px 26px rgba(0, 0, 0, 0.09), 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
+#info{
+  display: contents;
+}
 
 .button-delete {
   position: absolute;
@@ -51,6 +54,8 @@
 .card_img img {
   height: 100%;
   object-fit: cover;
+  aspect-ratio: 1/1;
+  padding: 6px;
 }
 
 .card-price,
@@ -60,3 +65,28 @@
   font-size: 0.8rem;
   color: #76777c;
 }
+/*celular*/
+@media (max-width: 325px){
+ .card{
+  flex-direction: row;
+  max-width: inherit;
+    min-height: inherit;
+ }
+ .card img {
+  max-height: 96px;
+  border-radius: 9%;
+ }
+ .card_img {
+  width: inherit;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#info{
+  display: flex;
+  flex-direction: column;
+}
+   
+  }
+
