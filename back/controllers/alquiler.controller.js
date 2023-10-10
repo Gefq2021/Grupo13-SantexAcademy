@@ -14,8 +14,7 @@ alquilercontroller.verificarAlquiler = async (req, res) => {
   try {
     req.body.fechaInicio = new Date(req.body.fechaInicio);
     req.body.fechaFin = new Date(req.body.fechaFin);
-    const productos = req.body.productos;
-
+    const productos = req.body.productos
     for (let i = 0; i < productos.length; i++) {
       let producto = await Products.findByPk(productos[i]);
       if (!producto) {
@@ -73,7 +72,6 @@ alquilercontroller.verificarAlquiler = async (req, res) => {
       .status(201)
       .json({ message: "El alquiler puede ser aprobado", estado: 1 });
   } catch (error) {
-    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -86,13 +84,12 @@ alquilercontroller.verificarAlquiler = async (req, res) => {
  */
 alquilercontroller.crearAlquiler = async (req, res) => {
   const productos = req.body.productos;
-  let PrecioFinal = 0;
-  req.body.precioFinal = PrecioFinal;
   const alq = await Alquiler.create(req.body);
   for (let i = 0; i < productos.length; i++) {
-    let producto = await Products.findByPk(productos[i]);
-    await alq.addProduct(producto);
+    let p = await Products.findByPk(productos[i].id);
+    await alq.addProduct(p);
   }
+  return res.status(201).json({msg:"Alquiler creado",alquiler:alq, });
 };
 
 /**
@@ -197,4 +194,30 @@ alquilercontroller.alquileresgestionados = async (req, res) => {
   }
 }
 
+
+/**
+ * @method GET
+ * @name alquileresRevision
+ * @body
+ * @description metodo para obtener todos los alquileres en revision
+ */
+
+alquilercontroller.alquileresRevision = async (req, res) => {
+     try {
+    const alquileres = await Alquiler.findAll({
+      include: [
+        {
+          model: Products,
+        },
+      ],
+      where: {
+        estado: "revision",
+      },
+    });
+    return res.status(200).json(alquileres);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: error.message });
+  }
+}
 module.exports = alquilercontroller;
