@@ -3,12 +3,12 @@ const router = express.Router();
 const controller = require('../controllers/alquiler.controller')
 
 // Create
-router.post('/verify',controller.verificarAlquiler);
-router.post('/',controller.crearAlquiler);
+router.get('/revision',controller.alquileresRevision)
+router.get('/verify/:id',controller.verificarAlquiler);
 router.get('/:id',controller.alquileresById)
 router.get('/gestionados/:id',controller.alquileresgestionados)
 router.get('/pedidos/:id',controller.alquilerespedidos)
-router.get('/revision',controller.alquileresRevision)
 router.get('/',controller.alquileres)
+router.post('/',controller.crearAlquiler);
 
 module.exports = router;

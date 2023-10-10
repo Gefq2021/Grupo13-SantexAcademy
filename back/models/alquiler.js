@@ -20,11 +20,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'verificadoPor',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
+        as:'verificador'
       })
       Alquiler.belongsTo(models.User, {
         foreignKey: 'solicitadoPor',
         onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',})
+        onUpdate: 'CASCADE',
+        as: 'solicitante'
+      })
     }
   }
   Alquiler.init({
