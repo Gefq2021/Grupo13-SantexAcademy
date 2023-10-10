@@ -20,7 +20,7 @@ export interface menuItem {
 })
 export class NavBarComponent implements OnInit {
   
-  menu: menuItem[] = [{name: "Home", paht: "home", type:0}, {name: "Agregar Producto", paht: "form-add-product", type:1}, {name: "Actualizar Producto", paht:"form-update", type:1}, {name: "Buscar Producto", paht: "search-product", type:0}, {name: "Eliminar Producto", paht: "form-delete", type:1}];
+  menu: menuItem[] = [{name: "Home", paht: "home", type:0}, {name: "Agregar Producto",paht: "form-add-product", type:1}, {name: "Buscar Producto", paht: "search-product", type:0}, {name: "Eliminar Producto", paht: "form-delete", type:1}];
   
   isMenuOpen: boolean = false;
   isDropdownOpen: boolean = false;
