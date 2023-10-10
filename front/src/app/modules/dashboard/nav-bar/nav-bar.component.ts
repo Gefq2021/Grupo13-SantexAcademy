@@ -43,6 +43,7 @@ export class NavBarComponent implements OnInit {
 
   @HostListener('document:click', ['$event'])
   onDocumentClick($event: MouseEvent): void {
+    
     const elementoExcluido = this.elRef.nativeElement.querySelector('.header-menu-button');
     if (!elementoExcluido.contains($event.target)) {
       // Si no hace click en el boton de menu.
@@ -53,8 +54,12 @@ export class NavBarComponent implements OnInit {
     }
   }
 
-
+  logeado(){
+    return this.userServ.isLoggedIn()
+  }
   ngOnInit(): void {
+    this.user=JSON.parse(localStorage.getItem("user")|| "")
+    this.isAuthenticated = this.userServ.isLoggedIn();
   }
 
   
@@ -64,7 +69,7 @@ export class NavBarComponent implements OnInit {
   }
 
   onButtonClick() {
-    if (this.isAuthenticated) {
+    if (this.logeado()) {
       // Si el usuario está autenticado, muestra el menú desplegable.
       this.isDropdownOpen = !this.isDropdownOpen;
       //this.router.navigate(['./dashboard/home']);

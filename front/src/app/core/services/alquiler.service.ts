@@ -11,6 +11,9 @@ export class AlquilerService {
   public postAlquiler(body: any): Observable<any> {
     return this._http.post(this.mainURL,body);
   }
+  public verificarAlquiler(body: any): Observable<any> {
+    return this._http.post(this.mainURL+"/verify",body);
+  }
   public getAlquileres(): Observable<any> {
      return this._http.get(this.mainURL);
   }
