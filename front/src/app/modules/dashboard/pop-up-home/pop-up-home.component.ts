@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
 import { ShoppingCartService } from 'src/app/core/services/shopping-cart.service';
+import { User } from 'src/app/core/interfaces/user';
 
 @Component({
   selector: 'app-pop-up-home',
@@ -16,7 +17,7 @@ import { ShoppingCartService } from 'src/app/core/services/shopping-cart.service
 export class PopUpHomeComponent implements OnInit {
   
   product: Product;
-
+  user!:User;
   constructor(
     public dialogRef: MatDialogRef<PopUpHomeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { product: Product },
@@ -26,6 +27,7 @@ export class PopUpHomeComponent implements OnInit {
     private shoppingCartService: ShoppingCartService
   ) {
     this.product = data.product;
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
   }
 
   ngOnInit(): void {

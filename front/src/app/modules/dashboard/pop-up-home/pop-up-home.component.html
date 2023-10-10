@@ -16,7 +16,7 @@
         Agregar al Carrito
         <mat-icon>add_shopping_cart</mat-icon>
     </button>
-    <button mat-raised-button class="editar-button" (click)="closeDialog()">
+    <button *ngIf="user.type>0" mat-raised-button class="editar-button" (click)="closeDialog()">
         Editar
         <mat-icon>edit</mat-icon>
         
