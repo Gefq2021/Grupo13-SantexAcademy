@@ -14,6 +14,7 @@ export class ShoppingCartComponent implements OnInit {
   productList: Product[] = new Array<Product>();
   p!:Product 
   
+  
   constructor(private shoppingCartService: ShoppingCartService) { 
     
   }
