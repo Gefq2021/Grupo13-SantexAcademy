@@ -1,5 +1,5 @@
 <header class="header">
-  <div class="header-logo">ABC Muebleria</div>
+  <div class="header-logo"> ABC Muebleria </div>
   <nav class="header-nav" [class.open-menu]="isMenuOpen">
     <ul class="navbar-menu">
       <li class="nav-item" routerLinkActive="active" *ngFor="let item of menu" >
@@ -9,7 +9,7 @@
   </nav>
 
   <div class="header-der">
-    <a *ngIf="userType==0" [matBadge]="total$ | async" matBadgeColor="warn" class="cart" routerLink="./shopping-cart">
+    <a *ngIf="userType==0 && logeado()" [matBadge]="total$ | async" matBadgeColor="warn" class="cart" routerLink="./shopping-cart">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="1em"
@@ -43,11 +43,11 @@
       </svg>
       </button>
       <!--Menu delplegable usuario Autenticado-->
-      <div class="dropdown-content" *ngIf="isDropdownOpen && isAuthenticated">
+      <div class="dropdown-content" *ngIf="isDropdownOpen && logeado()">
         <ul style="list-style: none;">
           <li >
             <!--¡ Hola {{perfilUsuario.nombre}} !-->
-            ¡Hola Juan Alberto!
+            ¡Hola {{user.firstName}} {{user.lastName}}!
           </li>
           <li><a href="./dashboard/perfil-Users">Perfil</a></li>
           <li><a href="./dashboard/home">Home</a></li>

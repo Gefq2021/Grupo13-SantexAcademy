@@ -15,9 +15,9 @@
         <div class="price-shopping ">
           <mat-form-field>
             <mat-label>Enter a date range</mat-label>
-            <mat-date-range-input [rangePicker]="picker">
-              <input matStartDate placeholder="Start date">
-              <input matEndDate placeholder="End date">
+            <mat-date-range-input [rangePicker]="picker" [formGroup]="range">
+              <input matStartDate  formControlName="start">
+              <input matEndDate  formControlName="end">
             </mat-date-range-input>
             <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -41,7 +41,7 @@
             <span class="total-price">Total</span>
             <span class="total-price">$ {{ totalPrice }}</span>
           </div>
-          <button type="submit" class="button button-buy">Comprar</button>
+          <button type="submit" (click)="registrarPedido()" class="button button-buy">Pedir confirmacion</button>
         </div>
       </div>
      

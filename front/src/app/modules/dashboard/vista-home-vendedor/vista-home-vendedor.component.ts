@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Alquiler } from 'src/app/core/interfaces/alquiler';
+import { AlquilerService } from 'src/app/core/services/alquiler.service';
 import { UserService } from 'src/app/core/services/user.service';
 
 export interface Usuario {
@@ -7,7 +11,7 @@ export interface Usuario {
   direccion: string;
   pedidos: Pedido[];
 }
-export interface Pedido{
+export interface Pedido {
   nombreC: string;
   fechaInicio: string;
   fechaFin: string;
@@ -16,41 +20,34 @@ export interface Pedido{
 @Component({
   selector: 'app-vista-home-vendedor',
   templateUrl: './vista-home-vendedor.component.html',
-  styleUrls: ['./vista-home-vendedor.component.css']
+  styleUrls: ['./vista-home-vendedor.component.css'],
 })
 export class VistaHomeVendedorComponent implements OnInit {
+  alquileresPendientes: Alquiler[] = [];
 
-  pedidoList: Pedido[] = [];
-  pedidoList1: Pedido[] = [
-    {nombreC: 'Amelia', fechaInicio: '22/03/23', fechaFin: '22/04/23', unidades: 20},
-    {nombreC: 'Amelia1', fechaInicio: '22/03/23', fechaFin: '22/04/23', unidades: 40},
-    {nombreC: 'Amelia2', fechaInicio: '22/03/23', fechaFin: '22/04/23', unidades: 20},
-    {nombreC: 'Amelia3', fechaInicio: '22/03/23', fechaFin: '22/04/23', unidades: 30},
-    {nombreC: 'Amelia4', fechaInicio: '22/03/23', fechaFin: '22/04/23', unidades: 20},
-    {nombreC: 'Amelia5', fechaInicio: '22/03/23', fechaFin: '22/04/23', unidades: 10},
-    {nombreC: 'Amelia6', fechaInicio: '22/03/23', fechaFin: '22/04/23', unidades: 20},
-    {nombreC: 'Amelia7', fechaInicio: '22/03/23', fechaFin: '22/04/23', unidades: 10},
-    {nombreC: 'Amelia7', fechaInicio: '22/03/23', fechaFin: '22/04/23', unidades: 10}
-  ];
-  
-  usuarioList: Usuario = 
-    {nombre: 'Juan Alberto', direccion:'Avnda Vespucio - Jujuy', pedidos: this.pedidoList1}
-  ;
-
-// Variable sujeta al usuario
+  // Variable sujeta al usuario
   esVendedor: boolean = true;
   greetingMessage: string = '';
-  user: any = localStorage.getItem("user")
+  user: any = localStorage.getItem('user');
 
-  constructor(private usersev:UserService, private router: Router) {
-    if(this.user){
-      this.user=JSON.parse(this.user)
+  constructor(
+    private usersev: UserService,
+    private router: Router,
+    private alquilerServ: AlquilerService,
+    private _snackBar: MatSnackBar
+  ) {
+    if (this.user) {
+      this.user = JSON.parse(this.user);
     }
-   }
+  }
 
   // this.esVendedor = this.authService.esVendedor();
   ngOnInit() {
     this.setGreetingMessage();
+    this.alquilerServ.getRevision().subscribe((data) => {
+      this.alquileresPendientes = data;
+    });
+    this.user = JSON.parse(this.user)
   }
 
   setGreetingMessage() {
@@ -66,11 +63,37 @@ export class VistaHomeVendedorComponent implements OnInit {
   }
 
   // Simula  eliminar un pedido  debemo cambiarlo por aprobado o rechazado
-  tomarPedido(index: number) {
-    
-    if (index >= 0 && index < this.pedidoList1.length) {
-      
-      this.pedidoList1.splice(index, 1);
+  tomarPedido(option: number, alq:Alquiler) { //opcion 0 rechaza opcion 1 acepta
+    alq.verificadoPor = this.user.id;
+    if (option == 0) {
+      alq.estado = "rechazado";
+      this.openSnackBar("Se ha rechazado el pedido", "Ok")
+    }else{
+      alq.estado = "aprobado";
+      this.openSnackBar("Se ha aprobado el pedido", "Ok")
     }
+    this.alquilerServ.putAlquiler(String(alq.id), alq).subscribe((data) => {
+      
+      this.alquilerServ.getRevision().subscribe((data) => {
+        this.alquileresPendientes = data;
+      });
+    })
+  }
+  verificar(id: number) {
+    let aux = String(id);
+    this.alquilerServ.verificarAlquiler(aux).subscribe((data) => {
+      console.log(data)
+      //encontramos en la lista el pedido con el id
+      let index = this.alquileresPendientes.findIndex(
+        (pedido) => pedido.id == id
+      );
+      this.alquileresPendientes[index].verified = data.estado;
+     this.openSnackBar(data.message, "Ok")
+    });
+    
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 }

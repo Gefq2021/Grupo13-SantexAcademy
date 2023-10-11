@@ -11,6 +11,9 @@ export class AlquilerService {
   public postAlquiler(body: any): Observable<any> {
     return this._http.post(this.mainURL,body);
   }
+  public verificarAlquiler(id: string): Observable<any> {
+    return this._http.get(this.mainURL+"verify/" + id);
+  }
   public getAlquileres(): Observable<any> {
      return this._http.get(this.mainURL);
   }
@@ -23,6 +26,14 @@ export class AlquilerService {
     public putAlquiler(id:string,body:any): Observable<any> {
       return this._http.put(this.mainURL+id,body);
     }
-
+    public getpedidos(id:string): Observable<any> {
+      return this._http.get(this.mainURL+"pedidos/"+id);
+    }
+    public getRevision(): Observable<any> {
+       return this._http.get(this.mainURL+"revision/");
+    }
+    public getGestionados (id:string): Observable<any> {
+      return this._http.get(this.mainURL+"gestionados/"+id);
+    }
 
 }

@@ -1,29 +1,39 @@
-<button mat-icon-button style="float: right;" matDialogClose>
-    <mat-icon>close</mat-icon>
-</button>
-<mat-dialog-content>
-    <header>
-        <h1>{{ product.name | uppercase}}</h1>
-    </header>
-
-    <img mat-card-image [src]="product.image" width="300px" alt="Product Image">
-   
-    <p>Precio: {{ product.price | currency}}</p>
-    <p>Descripción: {{ product.description }}</p>
-</mat-dialog-content>
-<mat-dialog-actions  align="end" class="button-container">
-    <button mat-raised-button (click)="agregarAlCarrito()" class="agregar-al-carrito-button">
-        Agregar al Carrito
-        <mat-icon>add_shopping_cart</mat-icon>
-    </button>
-    <button mat-raised-button class="editar-button" (click)="closeDialog()">
-        Editar
-        <mat-icon>edit</mat-icon>
+<div class="container">   
+    <mat-dialog-content class="popUp">
+        <div class="top">
+            <button mat-icon-button class="close" matDialogClose>
+                <mat-icon>close</mat-icon>
+            </button>
+            
+                <b class="title">{{ product.name | uppercase}}</b>
+            
+        </div>
         
-    </button>
-    <button mat-raised-button (click)="guardarParaMasTarde()"color="primary">Guardar para Más Tarde
-        <mat-icon>update</mat-icon>
-    </button>
-</mat-dialog-actions>
+    
+        <img mat-card-image [src]="product.image" width="300px" alt="Product Image">
+       
+        <div class="info">
+            <p>Precio: <b>{{ product.price | currency}}</b></p>
+            <p>Descripción: <b>{{ product.description }}</b> </p>
+        </div>
+       
+    </mat-dialog-content>
+    <mat-dialog-actions class="button-container">
+        <button mat-raised-button (click)="agregarAlCarrito()" class="agregar-al-carrito-button">
+            Agregar al Carrito
+            <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+        <button *ngIf="user.type>0" mat-raised-button class="editar-button" (click)="closeDialog()">
+            Editar
+            <mat-icon>edit</mat-icon>
+            
+        </button>
+        <!-- <button mat-raised-button (click)="guardarParaMasTarde()"color="primary">Guardar para Más Tarde
+            <mat-icon>update</mat-icon>
+        </button> -->
+    </mat-dialog-actions>
+</div>
+
+
 
 

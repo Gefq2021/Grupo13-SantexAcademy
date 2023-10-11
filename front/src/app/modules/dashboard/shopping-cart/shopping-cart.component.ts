@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/core/interfaces/product';
 import { ShoppingCartService } from 'src/app/core/services/shopping-cart.service';
 import { Observable, map } from 'rxjs';
+import { AlquilerService } from 'src/app/core/services/alquiler.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -13,9 +16,14 @@ export class ShoppingCartComponent implements OnInit {
   
   productList: Product[] = new Array<Product>();
   p!:Product 
-  
-  
-  constructor(private shoppingCartService: ShoppingCartService) { 
+  startDate!:Date
+  endDate!:Date
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+  constructor(private shoppingCartService: ShoppingCartService, private alquilerService:AlquilerService,
+    private _snackBar: MatSnackBar) { 
     
   }
 
@@ -40,4 +48,25 @@ export class ShoppingCartComponent implements OnInit {
        })
      })     
   }
+  registrarPedido(): void {
+    let user =JSON.parse(localStorage.getItem("user")!);
+    let body = {
+      "productos": this.productList,
+      "fechaInicio": this.range.value.start,
+      "fechaFin": this.range.value.end,
+      "solicitadoPor": user.id,
+      "precioFinal": this.totalPrice
+    }
+    this.alquilerService.postAlquiler(body).subscribe(
+      cres=>{
+        console.log(cres)
+        this.openSnackBar(cres.msg, "Ok")
+      }
+    );
+    this.emptyCart()
+  }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
 }
