@@ -6,6 +6,8 @@ mat-dialog-content img {
     display: block; /* Asegura que la imagen se comporte como un bloque */
     margin: 0 auto; /* Centra la imagen horizontalmente */
     max-width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: scale-down
 }
 .container{
     display: flex;
