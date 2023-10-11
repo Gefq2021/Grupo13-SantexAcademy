@@ -1,6 +1,10 @@
 .container {
     padding: 1rem;
   }
+  .disabled{
+    background-color: #797272c9;
+   color: #ffffff;
+  }
   .section-search {
     width: 100%;
     display: grid;
