@@ -2,13 +2,16 @@ import { Product } from './product';
 import { User } from './user';
 
 export interface Alquiler {
-  products: [Product];
+  Products: [Product];
   precioFinal: number; 
   estado: string;
   fechaInicio: string;
   fechaFin: string;
-  solicitadoPor: User;
-  verificadoPor:User;
+  solicitadoPor: number;
+  solicitante:User
+  verificadoPor:number;
+  verificador:User
   id: number;
   comentario:string;
+  verified: number;
 }
