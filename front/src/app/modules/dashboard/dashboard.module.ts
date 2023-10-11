@@ -28,19 +28,30 @@ import { LoginComponent } from './login/login.component';
 import { VistaUsuarioPerfilComponent } from './vista-usuario-perfil/vista-usuario-perfil.component';
 import { RegisterUsersComponent } from './register-users/register-users.component';
 import { VistaHomeVendedorComponent } from './vista-home-vendedor/vista-home-vendedor.component';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-
-
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent,
-  FormDeleteComponent, HomeComponent, PopUpHomeComponent, ShoppingCartComponent,
-  SearchProductComponent, ProductCardComponent, VistaProveedoresComponent,FooterComponent, 
-  LoginComponent, CardComponent,VistaUsuarioPerfilComponent, VistaHomeVendedorComponent, RegisterUsersComponent],
-
-
-
+  declarations: [
+    DashboardPageComponent,
+    FormAddProductComponent,
+    FormUpdateComponent,
+    NavBarComponent,
+    FormDeleteComponent,
+    HomeComponent,
+    PopUpHomeComponent,
+    ShoppingCartComponent,
+    SearchProductComponent,
+    ProductCardComponent,
+    VistaProveedoresComponent,
+    FooterComponent,
+    LoginComponent,
+    CardComponent,
+    VistaUsuarioPerfilComponent,
+    VistaHomeVendedorComponent,
+    RegisterUsersComponent,
+  ],
 
   imports: [
     CommonModule,
@@ -56,7 +67,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatSelectModule,
     MatBadgeModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule,
   ],
   exports: [DashboardPageComponent],
   providers: [],

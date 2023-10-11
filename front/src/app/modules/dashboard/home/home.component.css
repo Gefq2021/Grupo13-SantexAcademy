@@ -2,7 +2,7 @@
     padding: 1.5rem;
     font-size: 2rem;
     font-weight: 700;
-    color: #76777c;;
+    color: #1b2b7d;;
   }
   .products {
     width: 100%;
@@ -37,8 +37,7 @@
   }
   
   .card_img {
-    width: 6rem;
-    height: 8rem;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,6 +46,9 @@
  aspect-ratio: 1/1;
  width: 80%;
  min-width: 50px;
+ border-radius: 9%;
+ margin-top: 6px;
+ margin-bottom: 6px;
 }
 
 
@@ -74,5 +76,12 @@
       display: flex;
       overflow-x: scroll;
       scroll-snap-type: x mandatory;
+    }
+
+
+  }
+  @media (max-width: 325px){
+    .h1 { 
+      font-size: 1.8rem;
     }
   }
