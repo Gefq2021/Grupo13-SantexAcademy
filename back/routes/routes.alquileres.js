@@ -9,6 +9,7 @@ router.get('/:id',controller.alquileresById)
 router.get('/gestionados/:id',controller.alquileresgestionados)
 router.get('/pedidos/:id',controller.alquilerespedidos)
 router.get('/',controller.alquileres)
+router.put('/:id',controller.EDIT);
 router.post('/',controller.crearAlquiler);
 
 module.exports = router;

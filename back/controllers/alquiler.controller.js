@@ -238,4 +238,27 @@ alquilercontroller.alquileresRevision = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+/**
+ * @method PUT
+ * @name EDIT
+ * @body { cuerpo del alquiler}
+ * @param {id} id del alquiler a editar
+ * @description metodo para editar un alquiler
+ */
+ alquilercontroller.EDIT = async (req, res) => {
+  try {
+    const alquiler = await Alquiler.findByPk(req.params.id);
+    if (!alquiler) {
+      return res.status(404).json({ msg: "Alquiler no encontrado" });
+    }
+    const alq = await alquiler.update(req.body);
+    return res.status(200).json({ msg: "Alquiler actualizado correcamente", alquiler: alq});
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+
+
+
+
 module.exports = alquilercontroller;
