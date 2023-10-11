@@ -25,13 +25,19 @@ alquileresUser!: Alquiler[]
 
   ngOnInit(): void {
     this.perfilUsuario = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")!) : null;
+    if(this.perfilUsuario.type==0){
      this.alquilerserv.getpedidos(this.perfilUsuario.id).subscribe(
       res=>{
        this.alquileresUser = res;
-       console.log(res)
-       console.log(this.alquileresUser)
       }
-     )
+     )}
+     else{
+      this.alquilerserv.getGestionados(this.perfilUsuario.id).subscribe(
+        res=>{
+         this.alquileresUser = res;
+        }
+       )
+     }
     
   }
   removeProducto(index: number){

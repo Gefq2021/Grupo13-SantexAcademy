@@ -135,3 +135,33 @@
     font-weight: 700;
     
   }
+  .Botonera{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+  }
+  .Botonera button {
+    color: white;
+    border: none;
+    margin: 8px;
+    border-radius: 6px;
+    padding: 9px;
+    background-color: #115DFC;
+    
+  }
+
+  .Botonera button:disabled{
+    background-color: #243e77;
+    color: rgb(157, 157, 157);
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:visited{
+    color:white
+  }
+  a:link{
+    color: white;
+  }

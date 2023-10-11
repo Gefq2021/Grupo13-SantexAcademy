@@ -34,7 +34,8 @@
 <!--Carousel Parte Alquiler-->
 <div>
     <div >
-        <h1 class="user-data-product">Mis Alquileres</h1>
+        <h1 *ngIf="perfilUsuario.type==0" class="user-data-product">Mis Alquileres</h1>
+        <h1 *ngIf="perfilUsuario.type>0" class="user-data-product">Alquileres Gestionados:</h1>
     </div>
     <div class="empty" *ngIf="alquileresUser.length == 0">
         <span>No cuenta con alquileres aún...</span>
