@@ -31,7 +31,8 @@ import { VistaHomeVendedorComponent } from './vista-home-vendedor/vista-home-ven
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { PopUpHomeVendedorComponent } from './pop-up-home-vendedor/pop-up-home-vendedor.component';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     DashboardPageComponent,
@@ -51,6 +52,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     VistaUsuarioPerfilComponent,
     VistaHomeVendedorComponent,
     RegisterUsersComponent,
+    PopUpHomeVendedorComponent,
   ],
 
   imports: [
@@ -69,6 +71,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
+    MatListModule
   ],
   exports: [DashboardPageComponent],
   providers: [],

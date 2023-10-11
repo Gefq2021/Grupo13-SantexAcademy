@@ -1,0 +1,61 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+}
+.close{
+    align-self: flex-end;
+    background-color: #a01414;
+    color: white;
+    width: 28px;
+    height: 28px;
+}
+.close-icon {
+    width: 22px;
+    height: 35px;
+}
+.top{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+.info {
+    font-size: medium;
+}
+.popUp{
+    display: flex;
+    flex-direction: column;
+}
+
+.popUp div{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-size: medium;
+}
+mat-list-item img {
+    width: 60px; 
+    height: auto; 
+    margin: 4px;
+  }
+  
+mat-icon-button {
+    width: 20px;
+    height: 20px;
+}
+
+
+  /* Estilo para el nombre (p.name) */
+mat-list-item span.matListItemTitle {
+    display: block;
+  }
+  
+  /* Estilo para el precio (p.price) */
+  mat-list-item span.matListItemLine {
+    display: block;
+    font-weight: bold; /* Opcional: para hacer que el precio sea más destacado */
+  }
+  
