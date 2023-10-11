@@ -1,27 +1,35 @@
-
 <div class="container">
-    <mat-dialog-content class="popUp">
-        <div class="top">
-            <button mat-icon-button class="close" matDialogClose>
-                <mat-icon class="close-icon">close</mat-icon>
-            </button>
-            <b class="title">Productos</b>
-        </div>
-        
-       
-        <div class="info" >
-            <!--<p>Nada: <b>{{p}}</b></p>-->
-            
-            <mat-list>
-                
-                <mat-list-item *ngFor="let p of alquiler.Products">
-                    <img matListItemAvatar src="{{p.image}}" alt="...">
-                    <span matListItemTitle>{{p.name}}</span>
-                    <!--<span matListItemLine>{{p.price | currency}}</span>-->
-                </mat-list-item>
-            </mat-list>
-              
-        </div>
-       
-    </mat-dialog-content>
+  <mat-dialog-content class="popUp">
+    <div class="top">
+      <button mat-icon-button class="close" matDialogClose>
+        <mat-icon class="close-icon">close</mat-icon>
+      </button>
+      <b class="title">Pedido numero {{ alquiler.id }} </b>
+    </div>
+
+    <div class="info">
+      <div>
+        Solicitado por:{{ alquiler.solicitante.lastName }},
+        {{ alquiler.solicitante.firstName }}
+      </div>
+      <b>Productos pedidos:</b>
+      <mat-list class="list">
+        <mat-list-item class="list--opcion" *ngFor="let p of alquiler.Products">
+          <img matListItemAvatar src="{{ p.image }}" alt="{{ p.name }}" />
+          <span matListItemTitle>{{ p.name }}</span>
+          <span matListItemLine id="precio" class="resaltar">{{
+            p.price | currency
+          }}</span>
+        </mat-list-item>
+      </mat-list>
+      <div id="fechas">
+        <span
+          >Desde <b class="resaltar">{{ alquiler.fechaInicio | date }}</b>
+        </span>
+        <span>
+          Hasta <b class="resaltar">{{ alquiler.fechaFin | date }}</b>
+        </span>
+      </div>
+    </div>
+  </mat-dialog-content>
 </div>

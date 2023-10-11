@@ -71,7 +71,7 @@ const routes: Routes = [
         path:'home-vendedor',
         component: VistaHomeVendedorComponent,
         canActivate: [AuthGuard]
-      }
+      },
     ]
     
   }
