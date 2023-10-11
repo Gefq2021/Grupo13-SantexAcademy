@@ -124,7 +124,8 @@ export class FormUpdateComponent implements OnInit {
     //seteo del form y de la nueva lista
 
     this.myForm.reset();
-
+    //redirigimos al home
+    this.router.navigate(['/home']);
     
   }
   
