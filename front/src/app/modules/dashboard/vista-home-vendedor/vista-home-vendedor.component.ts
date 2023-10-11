@@ -88,7 +88,6 @@ export class VistaHomeVendedorComponent implements OnInit {
         (pedido) => pedido.id == id
       );
       this.alquileresPendientes[index].verified = data.estado;
-      console.log(data.estado)
      this.openSnackBar(data.message, "Ok")
     });
     

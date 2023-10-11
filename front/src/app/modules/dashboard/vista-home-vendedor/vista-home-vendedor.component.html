@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-  <div class="pedidos">
+  <div class="pedidos" *ngIf="alquileresPendientes.length > 0">
     Pedidos por Confirmar
     <div class="container-pedidos">
       <div
@@ -33,6 +33,7 @@
             >Pedido Por: {{ pedido.solicitante.lastName }},
             {{ pedido.solicitante.firstName }}</span
           >
+          
           <span class="card-fecha">Desde {{ pedido.fechaInicio | date }}</span>
           <span class="card-fecha">Hasta {{ pedido.fechaFin | date }}</span>
           <div class="container-btn" *ngIf="pedido.verified >= 0">
@@ -51,7 +52,7 @@
               Rechazar
             </button>
           </div>
-          <div class="container-btn" *ngIf="pedido.verified != 0">
+          <div class="container-btn" *ngIf="pedido.verified != 0 and pedido.verified != 1 ">
             <button
               class="btn-gral btn-comprobar"
               style="padding: 2px"
