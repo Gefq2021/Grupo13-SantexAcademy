@@ -2,6 +2,7 @@ import { Product } from './product';
 import { User } from './user';
 
 export interface Alquiler {
+  id: number;
   Products: [Product];
   precioFinal: number; 
   estado: string;
@@ -11,7 +12,6 @@ export interface Alquiler {
   solicitante:User
   verificadoPor:number;
   verificador:User
-  id: number;
   comentario:string;
   verified: number;
 }

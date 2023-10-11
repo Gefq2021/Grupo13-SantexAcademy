@@ -1,61 +1,107 @@
-.container{
+.container {
     display: flex;
     flex-direction: column;
     padding: 4px;
 }
-.close{
+
+.close {
     align-self: flex-end;
     background-color: #a01414;
     color: white;
     width: 28px;
     height: 28px;
 }
+
 .close-icon {
     width: 22px;
     height: 35px;
 }
-.top{
+
+.top {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
 }
+
 .info {
     font-size: medium;
 }
-.popUp{
+
+.popUp {
     display: flex;
     flex-direction: column;
 }
 
-.popUp div{
+.popUp div {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
 .title {
-    font-size: medium;
+    font-size: large;
+
 }
-mat-list-item img {
-    width: 60px; 
-    height: auto; 
+
+.list--opcion img {
+    width: 60px;
+    height: auto;
     margin: 4px;
-  }
-  
+    aspect-ratio: 1/1;
+    object-fit: scale-down;
+    height: 90%;
+}
+
 mat-icon-button {
     width: 20px;
     height: 20px;
 }
 
+.list {
+    overflow-y: scroll;
+    width: 100%;
+    max-height: 40dvw;
+}
 
-  /* Estilo para el nombre (p.name) */
+.list--opcion {
+    background-color: rgb(222, 238, 251);
+    border-radius: 9px;
+    padding: 6px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+#fechas span {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#precio {
+    margin-left: 9px;
+}
+
+.resaltar {
+    margin-left: 8px;
+    font-weight: 600;
+    color: rgb(21, 21, 186);
+}
+
+/* Estilo para el nombre (p.name) */
 mat-list-item span.matListItemTitle {
     display: block;
-  }
-  
-  /* Estilo para el precio (p.price) */
-  mat-list-item span.matListItemLine {
+}
+
+/* Estilo para el precio (p.price) */
+mat-list-item span.matListItemLine {
     display: block;
-    font-weight: bold; /* Opcional: para hacer que el precio sea más destacado */
-  }
-  
+    font-weight: bold;
+    /* Opcional: para hacer que el precio sea más destacado */
+}
+
+@media (max-width: 400px) {
+
+    #precio {
+        display: none;
+    }
+
+}
