@@ -3,32 +3,26 @@
     <div class="saludo-usuario">
         <p class="usuario-text">{{ greetingMessage }}, {{user.firstName}} {{user.lastName}}</p>
     </div>
-    <div class="empty" *ngIf="usuarioList.pedidos.length <= 0">
+    <div class="empty" *ngIf="alquileresPendientes.length <= 0">
         <span>No cuenta con pedidos aún, intenta más tarde.</span>
     </div>
     <div class="pedidos">
         Pedidos por Confirmar
         <div class="container-pedidos">
-            <div class="pedido-row" *ngFor="let pedido of usuarioList.pedidos; let i = index">
+            <div class="pedido-row" *ngFor="let pedido of alquileresPendientes; let i = index">
                 <div class="card">
                     <div class="card_img">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        height="48"
-                        viewBox="0 -960 960 960"
-                        width="48"
-                      >
-                        <path
-                          d="M450-80v-520H80l400-280 400 280H510v520h-60Zm30-580h210-420 210ZM120-80v-211L88-466l58-10 32 166h162v230h-60v-170H180v170h-60Zm500 0v-230h162l32-166 58 10-32 175v211h-60v-170H680v170h-60ZM270-660h420L480-807 270-660Z"
-                        />
-                      </svg>
+                      <img src="{{pedido.Products[0].image}}" alt="">
                     </div>
-                    <span class="card_title">{{pedido.nombreC}}</span>
-                    <span class="card-fecha">Desde {{pedido.fechaInicio}}</span>
-                    <span class="card-fecha">Hasta {{pedido.fechaFin}}</span>
-                    <div class="container-btn">
-                        <button class="btn-gral btn-aceptar" (click)="tomarPedido(i)">Aceptar</button>
-                        <button class="btn-gral btn-rechazar"(click)="tomarPedido(i)">Rechazar</button>
+                    <span class="card_title">Pedido Por: {{pedido.solicitante.lastName}}, {{pedido.solicitante.firstName}}</span>
+                    <span class="card-fecha">Desde {{pedido.fechaInicio | date}}</span>
+                    <span class="card-fecha">Hasta {{pedido.fechaFin | date}}</span>
+                    <div class="container-btn" *ngIf="pedido.verified>=0">
+                        <button class="btn-gral btn-aceptar" *ngIf="pedido.verified>=1" (click)="tomarPedido(1, pedido)">Aceptar</button>
+                        <button class="btn-gral btn-rechazar" *ngIf="pedido.verified>=0" (click)="tomarPedido(0, pedido)">Rechazar</button>
+                    </div>
+                    <div class="container-btn" *ngIf="pedido.verified!=0">
+                        <button class="btn-gral btn-comprobar" style=" padding: 2px;" (click)="verificar(pedido.id);">Verficar Disponibilidad</button>
                     </div>
                 </div>
             </div>

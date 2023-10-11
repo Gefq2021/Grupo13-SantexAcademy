@@ -9,6 +9,14 @@
     box-shadow: 0px 0px 42px rgba(0, 0, 0, 0.01), 0px 0px 26px rgba(0, 0, 0, 0.05),
       0px 0px 26px rgba(0, 0, 0, 0.09), 0px 0px 15px rgba(0, 0, 0, 0.1);
   }
+  .card_img img {
+    aspect-ratio: 1/1;
+    width: 100%;
+    min-width: 50px;
+    border-radius: 9%;
+    margin-top: 6px;
+    margin-bottom: 6px;
+   }
   .pedidos {
     padding: 1.5rem;
     font-size: 2rem;
@@ -99,6 +107,10 @@
   .btn-aceptar:hover {
     background-color: #77eb9a;
     box-shadow: 0px 0px 20px -18px;  
+  }
+  .btn-comprobar:hover{
+    background-color: #77b9eb;
+    box-shadow: 0px 0px 20px -18px; 
   }
 
   .btn-rechazar:hover{
