@@ -9,13 +9,14 @@ import { Alquiler } from 'src/app/core/interfaces/alquiler';
 })
 export class PopUpHomeVendedorComponent implements OnInit {
 
-  alquiler: Alquiler;  
+  alquiler: Alquiler;
   constructor(
     public dialogRef: MatDialogRef<PopUpHomeVendedorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {alquiler: Alquiler},
     private dialog: MatDialog
   ) { 
     this.alquiler = data.alquiler;
+    
   }
 
   ngOnInit(): void {

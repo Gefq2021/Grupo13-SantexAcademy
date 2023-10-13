@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(private backService: BackServiceService, private matDialog:MatDialog, private router: Router ) {
     if(this.user){
       this.user=JSON.parse(this.user)
-      if(this.user.type==2){
+      if(this.user.type==2 || this.user.type==1){
         this.router.navigate(['/dashboard/home-vendedor'])
       }
     }
